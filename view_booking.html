@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Bookings</h2>
+{% if bookings %}
+<table>
+    <tr>
+        <th>Bus ID</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Seats</th>
+        <th>Total Price</th>
+    </tr>
+    {% for booking in bookings %}
+    <tr>
+        <td>{{ booking['bus_id'] }}</td>
+        <td>{{ booking['from_city'] }}</td>
+        <td>{{ booking['to_city'] }}</td>
+        <td>{{ booking['date'] }}</td>
+        <td>{{ booking['time'] }}</td>
+        <td>{{ booking['seats'] }}</td>
+        <td>${{ booking['price'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No bookings found.</p>
+{% endif %}
+{% endblock %}
